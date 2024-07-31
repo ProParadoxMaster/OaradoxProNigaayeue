@@ -3,8 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-TELEGRAM_BOT_TOKEN = 'your_telegram_bot_token'
-TELEGRAM_CHAT_ID = 'your_telegram_chat_id'
+TELEGRAM_BOT_TOKEN = '7050929517:AAGSnEhUbH9hF9wBtZGQd3Hyc8sj78XIihs'
+TELEGRAM_CHAT_ID = '7049562542'
 
 @app.route('/submit', methods=['POST'])
 def submit():
