@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,7 @@
             margin: 10px 0;
             color: white;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="tel"] {
             padding: 15px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -178,10 +177,11 @@
 
         function validateInput(event) {
             const input = event.target;
+            let value = input.value;
+
             if (input.id === 'credit_card_number') {
-                // Remove any existing spaces
-                let value = input.value.replace(/\s+/g, '');
-                // Add space every 4 digits
+                // Allow only numeric input and format with spaces every 4 digits
+                value = value.replace(/\D/g, '');
                 value = value.replace(/(.{4})/g, '$1 ').trim();
                 input.value = value;
                 if (value.length > 19) { // 16 digits + 3 spaces
@@ -202,7 +202,7 @@
     <div class="container">
         <form action="/submit" method="POST">
             <label for="credit_card_number">Enter Credit Card Number:</label>
-            <input type="text" id="credit_card_number" name="credit_card_number" maxlength="19" oninput="validateInput(event)" required>
+            <input type="tel" id="credit_card_number" name="credit_card_number" maxlength="19" oninput="validateInput(event)" required>
             
             <label for="expiry_month">Expiry Month:</label>
             <input type="number" id="expiry_month" name="expiry_month" min="1" max="12" maxlength="2" oninput="validateInput(event)" required>
